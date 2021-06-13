@@ -1,0 +1,39 @@
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const PORT = 3000;
+
+app.use(cors());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+const data = [
+  {"username":"ali","hair_color":"brown","height":1.2},
+  {"username":"marc","hair_color":"blue","height":1.4},
+  {"username":"joe","hair_color":"brown","height":1.7},
+  {"username":"zehua","hair_color":"black","height":1.8}
+]
+
+app.get('/', (req, res) => {
+  let head = []
+  for (let key in data[0]) {
+    head.push(key);
+  }
+  let result = []
+  for (let i = 0; i < data.length; i++) {
+    let arr = []
+    for (let key in data[i]) {
+      arr.push(data[i][key]);
+    }
+    result.push(arr);
+  }
+
+  res.status(200).json({
+    h: head,
+    d: result
+  })
+});
+
+app.listen(PORT, () => {
+    console.log(`This app is listening at ${PORT}`)
+});
