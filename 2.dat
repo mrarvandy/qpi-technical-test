@@ -1,0 +1,15 @@
+function allPrimes(n) {
+  const res = [];
+  for (let i = 1; i < n; i++) {
+    const arr = [];
+    for (let j = 1; j <= i; j++) {
+      if (i % j === 0) {
+        arr.push(j);
+      }
+    }
+    if (arr.length === 2) {
+      res.push(i);
+    }
+  }
+  return res
+}

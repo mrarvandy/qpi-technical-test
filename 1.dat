@@ -1,0 +1,9 @@
+SELECT
+	COUNT(*) FILTER (WHERE date BETWEEN '2011-03-01' AND '2011-06-30') AS "day",
+	SUM(score) FILTER (WHERE score > 0 AND date BETWEEN '2011-03-01' AND '2011-06-30') AS "num_pos_scores",
+	SUM(score) FILTER (WHERE score < 0 AND date BETWEEN '2011-03-01' AND '2011-06-30') AS "num_neg_scores"
+FROM "Assessments";
+
+SELECT *
+FROM "Assessments"
+WHERE score > 0 AND date BETWEEN '2011-01-01' AND '2011-06-30';

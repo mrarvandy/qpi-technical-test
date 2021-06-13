@@ -1,0 +1,22 @@
+function getSum(desired, now, init, res, output) {
+  if (now === desired) {
+    output.push(res.slice());
+  }
+  for (let i = init; i <= desired; i++) {
+    let temp = now + i;
+    if (temp <= desired) {
+      res.push(i);
+      getSum(desired, temp, i, res, output);
+      res.pop();
+    } else {
+      return;
+    }
+  }
+};
+
+function printSum(desired) {
+  let output = [];
+  let res = [];
+  getSum(desired, 0, 1, res, output);
+  return output;
+};
